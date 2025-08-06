@@ -6,7 +6,6 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 def load_and_explore_data():
-    """Load the dataset and display basic information"""
     df = pd.read_csv('drug200.csv')
     print("Dataset Overview:")
     print(df.head())
@@ -15,15 +14,13 @@ def load_and_explore_data():
     return df
 
 def preprocess_data(df):
-    """Encode categorical variables using LabelEncoder"""
     le = LabelEncoder()
     df_processed = df.copy()
     
-    # Encode categorical variables
-    df_processed['Sex'] = le.fit_transform(df_processed['Sex'])          # Male=1, Female=0
-    df_processed['BP'] = le.fit_transform(df_processed['BP'])            # High=0, Low=1, Normal=2
-    df_processed['Cholesterol'] = le.fit_transform(df_processed['Cholesterol'])  # High=0, Normal=1
-    df_processed['Drug'] = le.fit_transform(df_processed['Drug'])        # DrugA=0, DrugB=1, etc.
+    df_processed['Sex'] = le.fit_transform(df_processed['Sex'])
+    df_processed['BP'] = le.fit_transform(df_processed['BP'])
+    df_processed['Cholesterol'] = le.fit_transform(df_processed['Cholesterol'])
+    df_processed['Drug'] = le.fit_transform(df_processed['Drug'])
     
     print("\nProcessed Dataset:")
     print(df_processed.head())
